@@ -36,3 +36,9 @@ github:
   open "https://github.com/maximehk/lab_dispatcher"
 
 
+# Download secrets from 1password
+max-init-secrets:
+  op read "op://homelab/homelab-dispatcher-docker-ssh-key/private key" > ssh/id_ed25519
+  op read "op://homelab/homelab-dispatcher-docker-ssh-key/public key" > ssh/id_ed25519.pub
+  op read "op://homelab/homelab-dispatcher-dot-env/.env" > .env
+  op read "op://homelab/homelab-dispatcher-google-creds.json/creds.json" > creds.json
