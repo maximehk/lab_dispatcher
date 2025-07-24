@@ -1,0 +1,13 @@
+[project]
+name = "homelab-cloud-controller"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "firebase-admin>=7.0.0",
+    "flask==3.0.3",
+    "functions-framework==3.8.2",
+    "google-auth>=2.40.3",
+    "google-cloud-error-reporting==1.11.1",
+    "google-cloud-pubsub>=2.31.0",
+    "markupsafe==2.1.3",
+]

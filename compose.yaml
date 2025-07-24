@@ -1,25 +1,16 @@
 services:
-  lab_dispatcher:
-    # Build the image from the Dockerfile in the current directory
-    build: .
-
-    container_name: lab_dispatcher
+  pubsub_listener:
+    build: pubsub_listener
+    container_name: pubsub_listener
     restart: unless-stopped
     
     environment:
       - PROJECT_ID=${PROJECT_ID}
       - SUBSCRIPTION_ID=${SUBSCRIPTION_ID}
-      - MIKROTIK_HOST=${MIKROTIK_HOST}
-      - ADDRESS_LIST=${ADDRESS_LIST}
-      - IP_TTL=${IP_TTL}
       - CREDS_FILEPATH=${CREDS_FILEPATH}
-      - ALLOWED_EMAILS=${ALLOWED_EMAILS}
 
     develop:
-      # Create a `watch` configuration to update the app
-      # https://docs.docker.com/compose/file-watch/#compose-watch-versus-bind-mounts
       watch:
-        # Sync the working directory with the `/app` directory in the container
         - action: sync
           path: .
           target: /app
@@ -29,3 +20,29 @@ services:
         # Rebuild the image if dependencies change by checking uv.lock
         - action: rebuild
           path: ./uv.lock
+
+  homelab_api:
+    build: homelab_api
+    container_name: homelab_api
+    restart: unless-stopped
+    ports:
+      - "7777:8000"
+    
+    environment:
+      - PROJECT_ID=${PROJECT_ID}
+      - MIKROTIK_HOST=${MIKROTIK_HOST}
+      - MIKROTIK_HTTPS_ALLOWLIST=${MIKROTIK_HTTPS_ALLOWLIST}
+      - IP_TTL=${IP_TTL}
+      - ALLOWED_EMAILS=${ALLOWED_EMAILS}
+
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - .venv/
+
+        # Rebuild the image if dependencies change by checking uv.lock
+        - action: rebuild
+          path: ./uv.lock          

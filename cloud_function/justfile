@@ -1,0 +1,22 @@
+[private]
+list:
+  @just -l
+
+[group('gcloud')]
+deploy:
+  uv export --no-hashes --format requirements-txt > requirements.txt
+  gcloud beta run deploy dispatch \
+      --allow-unauthenticated \
+      --source . \
+      --function dispatch \
+      --base-image python313 \
+      --region europe-west1
+
+
+[group('gcloud')]
+init-pubsub:
+  gcloud pubsub topics create homelab
+  gcloud pubsub subscriptions create homelab-sub \
+      --topic=homelab \
+      --ack-deadline=60 \
+      --message-retention-duration=604800s

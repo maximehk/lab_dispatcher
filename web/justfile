@@ -1,0 +1,13 @@
+[private]
+list:
+  @just -l
+
+[group('http')]
+serve:
+    caddy run
+
+
+[group('init')]
+init-index-file:
+    rm -f index.html
+    op inject -i index.html.template  -o index.html

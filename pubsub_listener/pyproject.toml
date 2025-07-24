@@ -1,10 +1,9 @@
 [project]
-name = "lab-dispatcher"
+name = "pubsub-listener"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard]>=0.116.1",
     "google-cloud-pubsub>=2.31.0",
+    "requests>=2.32.4",
 ]

@@ -1,0 +1,10 @@
+{
+        skip_install_trust
+        http_port 8899
+        https_port 8443
+}
+
+localhost {
+        file_server browse
+        tls internal
+}
