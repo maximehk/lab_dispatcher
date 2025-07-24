@@ -13,7 +13,7 @@
             id="user-email"></span></span>
     <button id="sign-out-button" class="authenticated-only" style="display:none">Sign Out</button>
     <button id="google-auth-button" class="unauthenticated-only" style="display:none">Authenticate with Google</button>
-    <button id="call-api-button" class="authenticated-only" style="display:none">Call API</button>
+    <button id="call-api-button" class="authenticated-only" style="display:none">Allow HTTPS for my IP</button>
 
 
     <script>
