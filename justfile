@@ -28,3 +28,10 @@ clean:
   rm -rf .venv __pycache__ .python-version .DS_Store
 
 
+# Open the GitHub repository
+[macos]
+[group('maintenance')]
+github:
+  open "https://github.com/maximehk/lab_dispatcher"
+
+
