@@ -5,6 +5,7 @@ list:
 # Prod 🚀
 [group('docker')]
 docker-up:
+  docker build .
   docker compose up --force-recreate -d
 
 # Show logs 🚀
