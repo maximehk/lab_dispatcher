@@ -1,0 +1,30 @@
+services:
+  lab_dispatcher:
+    # Build the image from the Dockerfile in the current directory
+    build: .
+
+    container_name: lab_dispatcher
+    restart: unless-stopped
+    
+    environment:
+      - PROJECT_ID=${PROJECT_ID}
+      - SUBSCRIPTION_ID=${SUBSCRIPTION_ID}
+      - MIKROTIK_HOST=${MIKROTIK_HOST}
+      - ADDRESS_LIST=${ADDRESS_LIST}
+      - IP_TTL=${IP_TTL}
+      - CREDS_FILEPATH=${CREDS_FILEPATH}
+
+    develop:
+      # Create a `watch` configuration to update the app
+      # https://docs.docker.com/compose/file-watch/#compose-watch-versus-bind-mounts
+      watch:
+        # Sync the working directory with the `/app` directory in the container
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - .venv/
+
+        # Rebuild the image if dependencies change by checking uv.lock
+        - action: rebuild
+          path: ./uv.lock

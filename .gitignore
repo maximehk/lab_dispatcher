@@ -1,0 +1,7 @@
+.DS_Store
+.python-version
+__pycache__
+ssh/id_ed25519
+ssh/id_ed25519.pub
+.env
+creds.json
