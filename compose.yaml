@@ -3,7 +3,6 @@ services:
     build: pubsub_listener
     container_name: pubsub_listener
     restart: unless-stopped
-    
     environment:
       - PROJECT_ID=${PROJECT_ID}
       - SUBSCRIPTION_ID=${SUBSCRIPTION_ID}
@@ -25,9 +24,6 @@ services:
     build: homelab_api
     container_name: homelab_api
     restart: unless-stopped
-    ports:
-      - "7777:8000"
-    
     environment:
       - PROJECT_ID=${PROJECT_ID}
       - MIKROTIK_HOST=${MIKROTIK_HOST}
@@ -45,4 +41,4 @@ services:
 
         # Rebuild the image if dependencies change by checking uv.lock
         - action: rebuild
-          path: ./uv.lock          
+          path: ./uv.lock
