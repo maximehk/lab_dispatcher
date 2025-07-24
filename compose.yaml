@@ -13,6 +13,7 @@ services:
       - ADDRESS_LIST=${ADDRESS_LIST}
       - IP_TTL=${IP_TTL}
       - CREDS_FILEPATH=${CREDS_FILEPATH}
+      - ALLOWED_EMAILS=${ALLOWED_EMAILS}
 
     develop:
       # Create a `watch` configuration to update the app
