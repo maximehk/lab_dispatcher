@@ -5,7 +5,7 @@
 3. Download a credential file for your service account from the cloud console.
 4. Reference the downloaded credential file in your `compose.yaml` file.
 5. Copy the `.env_template` to `.env` and update its values to match your environment
-6. Start the container e.g `docker build . && docker compose up -d` (alternatively, `just docker-up` if you have just.env)
+6. Start the container e.g `docker build . && docker compose up -d` (alternatively, `just docker-up` if you have [just.env](https://just.systems/))
 
 ## Important notes
 
