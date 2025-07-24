@@ -2,9 +2,9 @@
 
 1. Add your SSH keys to the `./ssh` directory (or create new ones with `ssh-keygen`).
 2. Authorize the public SSH key on the Mikrotik device.
-3. Download a credential file for your service account from the cloud console.
-4. Reference the downloaded credential file in your `compose.yaml` file.
-5. Copy the `.env_template` to `.env` and update its values to match your environment
+3. Copy the `.env_template` to `.env` and update its values to match your environment
+4. Download a credential file for your service account from the cloud console.
+5. Reference the downloaded credential file in your `compose.yaml` file.
 6. Start the container e.g `docker build . && docker compose up -d` (alternatively, `just docker-up` if you have [just.env](https://just.systems/))
 
 ## Important notes
