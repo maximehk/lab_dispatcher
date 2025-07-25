@@ -2,9 +2,7 @@
 
 ## Overview
 
-This show cases the first flow I've implemented which allows anyone authorized to punch a "hole" through my firewall so they can access my webserver.
-
-As you can see from the diagram, there is no open firewall port until the action is triggered through a Google Cloud Function.
+This show cases the first flow I've implemented which allows anyone authorized to punch a "hole" through my firewall so they can access a webserver. As you can see from the diagram, there is no open firewall port until the action is triggered through a Google Cloud Function.
 
 Afterwards, only their specific IP will be allowed through the firewall.
 
