@@ -21,7 +21,7 @@ just docker-up
 
 ## Overview
 
-![](doc/overview.excalidraw)
+![](doc/overview.svg)
 
 ## Important notes
 
