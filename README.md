@@ -18,6 +18,11 @@ just max-init-secrets
 just docker-up
 ```
 
+
+## Overview
+
+![](doc/overview.excalidraw)
+
 ## Important notes
 
 This is meant to be the first step of a more complex dispatcher (supporting more than just one command). Syncing to a newer version of the repo may break you.
