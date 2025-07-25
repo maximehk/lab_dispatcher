@@ -1,5 +1,22 @@
 # Readme for Homelab dispatcher
 
+## Overview
+
+This show cases the first flow I've implemented which allows anyone authorized to punch a "hole" through my firewall so they can access my webserver.
+
+As you can see from the diagram, there is no open firewall port until the action is triggered through a Google Cloud Function.
+
+Afterwards, only their specific IP will be allowed through the firewall.
+
+![](doc/overview.svg)
+
+Here is the rule I have on the Mikrotik router (running RouterOS):
+
+```
+/ip firewall nat add action=dst-nat chain=dstnat dst-port=443 in-interface=wan log=yes protocol=tcp src-address-list=wan-https-allowlist to-addresses={local_webserver_ip} to-ports=443
+```
+
+
 ## Installation Steps (after `git clone`)
 
 1. Add your SSH keys to the `./ssh` directory (or create new ones with `ssh-keygen`).
@@ -19,9 +36,7 @@ just docker-up
 ```
 
 
-## Overview
 
-![](doc/overview.svg)
 
 ## Important notes
 
