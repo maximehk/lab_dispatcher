@@ -12,7 +12,7 @@ docker-up:
 # Show logs 🚀
 [group('docker')]
 docker-logs:
-  docker compose logs -f 
+  docker compose logs -f
 
 # Shell into the container 🚀
 [group('docker')]
@@ -39,7 +39,7 @@ github:
 
 # Download secrets from 1password
 max-init-secrets:
-  op read "op://homelab/homelab-dispatcher-docker-ssh-key/private key" > homelab_api/ssh/id_ed25519
-  op read "op://homelab/homelab-dispatcher-docker-ssh-key/public key" > homelab_api/ssh/id_ed25519.pub
+  op read "op://homelab/homelab-dispatcher-docker-ssh-key/private key" > secrets/id_ed25519
+  op read "op://homelab/homelab-dispatcher-docker-ssh-key/public key" > secrets/id_ed25519.pub
+  op read "op://homelab/homelab-dispatcher-google-creds.json/creds.json" > secrets/creds.json
   op read "op://homelab/homelab-dispatcher-dot-env/.env" > .env
-  op read "op://homelab/homelab-dispatcher-google-creds.json/creds.json" > pubsub_listener/creds.json

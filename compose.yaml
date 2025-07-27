@@ -8,6 +8,10 @@ services:
       - SUBSCRIPTION_ID=${SUBSCRIPTION_ID}
       - CREDS_FILEPATH=${CREDS_FILEPATH}
 
+    volumes:
+      # Mount the credentials file for Google Cloud Pub/Sub
+      - ./secrets/creds.json:/secrets/creds.json
+
     develop:
       watch:
         - action: sync

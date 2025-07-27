@@ -4,7 +4,7 @@ FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 RUN apt update && apt-get install -y openssh-client \
     && rm -rf /var/lib/apt/lists/*
 
-    
+
 # Install the project into `/app`
 WORKDIR /app
 
