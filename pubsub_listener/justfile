@@ -1,0 +1,11 @@
+[private]
+list:
+  just -l
+
+tag := "v0.1"
+
+
+docker-image-push:
+    docker build . -t maxhk/pubsub-listener:{{tag}}
+    docker tag maxhk/pubsub-listener:{{tag}} maxhk/pubsub-listener:latest
+    docker push maxhk/pubsub-listener:{{tag}}

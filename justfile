@@ -5,8 +5,6 @@ list:
 # Prod 🚀
 [group('docker')]
 docker-up:
-  cd pubsub_listener && uv lock
-  docker build pubsub_listener -t pubsub_listener:latest
   docker compose up --force-recreate -d
 
 # Show logs 🚀

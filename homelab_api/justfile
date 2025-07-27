@@ -1,0 +1,10 @@
+[private]
+list:
+  just -l
+
+tag := "v0.1"
+
+docker-image-push:
+    docker build . -t maxhk/lab-dispatcher:{{tag}}
+    docker tag maxhk/lab-dispatcher:{{tag}} maxhk/lab-dispatcher:latest
+    docker push maxhk/lab-dispatcher:{{tag}}

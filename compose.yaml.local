@@ -1,6 +1,6 @@
 services:
   pubsub_listener:
-    image: maxhk/pubsub-listener:v0.1
+    build: pubsub_listener
     container_name: pubsub_listener
     restart: unless-stopped
     environment:
@@ -12,8 +12,20 @@ services:
       # Mount the credentials file for Google Cloud Pub/Sub
       - ./secrets/creds.json:/secrets/creds.json
 
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - .venv/
+
+        # Rebuild the image if dependencies change by checking uv.lock
+        - action: rebuild
+          path: ./uv.lock
+
   homelab_api:
-    image: maxhk/lab-dispatcher:v0.1
+    build: homelab_api
     container_name: homelab_api
     restart: unless-stopped
     environment:
@@ -26,3 +38,15 @@ services:
       # Mount SSH keys for MikroTik access
       - ./secrets/id_ed25519:/root/.ssh/id_ed25519
       - ./secrets/id_ed25519.pub:/root/.ssh/id_ed25519.pub
+
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - .venv/
+
+        # Rebuild the image if dependencies change by checking uv.lock
+        - action: rebuild
+          path: ./uv.lock
