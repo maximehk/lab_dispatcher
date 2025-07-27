@@ -25,11 +25,15 @@ services:
     container_name: homelab_api
     restart: unless-stopped
     environment:
-      - PROJECT_ID=${PROJECT_ID}
       - MIKROTIK_HOST=${MIKROTIK_HOST}
       - MIKROTIK_HTTPS_ALLOWLIST=${MIKROTIK_HTTPS_ALLOWLIST}
       - IP_TTL=${IP_TTL}
       - ALLOWED_EMAILS=${ALLOWED_EMAILS}
+
+    volumes:
+      # Mount SSH keys for MikroTik access
+      - ./secrets/id_ed25519:/root/.ssh/id_ed25519
+      - ./secrets/id_ed25519.pub:/root/.ssh/id_ed25519.pub
 
     develop:
       watch:
