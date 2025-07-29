@@ -18,8 +18,8 @@
 
     <script>
         var firebaseConfig = {
-            apiKey: "{{ op://homelab/homelab-dispatcher/api_key }}",
-            authDomain: "{{ op://homelab/homelab-dispatcher/auth_domain }}",
+            apiKey: "{{ env.API_KEY }}",
+            authDomain: "{{ env.AUTH_DOMAIN }}",
         };
 
         firebase.initializeApp(firebaseConfig);
@@ -42,7 +42,7 @@
 
         document.getElementById('call-api-button').addEventListener('click', () => {
             firebase.auth().currentUser.getIdToken().then(function (idToken) {
-                fetch('{{ op://homelab/homelab-dispatcher/cloud-function-url }}', {
+                fetch('{{ env.CLOUD_FUNCTION_URL }}', {
                     method: 'POST',
                     headers: {
                         'Authorization': 'Bearer ' + idToken,

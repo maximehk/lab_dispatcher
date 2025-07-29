@@ -10,4 +10,5 @@ serve:
 [group('init')]
 init-index-file:
     rm -f index.html
-    op inject -i index.html.template  -o index.html
+    op run --no-masking --env-file op.env -- \
+      uvx --from jinja2-max j2 --env -i index.html.template > index.html
